@@ -1,10 +1,13 @@
 package com.desire.model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
 @Getter
 @Setter
@@ -18,12 +21,17 @@ public class Employee {
     private long id;
 
     @Column(name = "first_name")
+    @NotBlank(message = "First Name is required")
+    @Size(min = 4, max = 15)
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank(message = "Last Name is required")
+    @Size(min = 4, max = 15)
     private String lastName;
 
     @Column(name = "email_id")
+    @NotBlank(message = "Email is required")
     private String emailId;
 
     public Employee(long id, String firstName, String lastName, String emailId) {
